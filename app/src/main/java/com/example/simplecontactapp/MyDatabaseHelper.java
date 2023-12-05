@@ -40,13 +40,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addBook(String title, String author, int pages){
+    void addContact(String name, String phoneNumber, String birthday){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_NAME, title);
-        cv.put(COLUMN_PHONE_NUMBER, author);
-        cv.put(COLUMN_BIRTHDAY, pages);
+        cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_PHONE_NUMBER, phoneNumber);
+        cv.put(COLUMN_BIRTHDAY, birthday);
         long result = db.insert(TABLE_NAME,null, cv);
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
@@ -66,12 +66,12 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void updateData(String row_id, String title, String author, String pages){
+    void updateData(String row_id, String name, String phoneNumber, String birthday){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_NAME, title);
-        cv.put(COLUMN_PHONE_NUMBER, author);
-        cv.put(COLUMN_BIRTHDAY, pages);
+        cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_PHONE_NUMBER, phoneNumber);
+        cv.put(COLUMN_BIRTHDAY, birthday);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
