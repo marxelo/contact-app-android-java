@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">SimpleContactApp</string>
     <string name="adicionar_contato">Adicionar contato</string>
+    <string name="save">Salvar</string>
+    <string name="birthday_hint">Aniversário (DD/MM)</string>
+    <string name="phone_hint">Telefone</string>
+    <string name="name_hint">Nome do contato</string>
+    <string name="no_contacts">Nenhum Contacto Cadastrado</string>
+    <string name="delete">Excluir</string>
+    <string name="update">Atualizar</string>
+    <string name="placeholder_1">1</string>
+    <string name="placeholder_name">Fulano da Silva</string>
+    <string name="placeholder_phone">+55 (99)99999-9999</string>
+    <string name="placeholder_birthday">01/01</string>
 </resources>

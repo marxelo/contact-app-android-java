@@ -1,11 +1,10 @@
 package com.example.simplecontactapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -22,15 +21,13 @@ public class AddActivity extends AppCompatActivity {
         phone_input = findViewById(R.id.phone_input);
         birthday_input = findViewById(R.id.birthday_input);
         add_button = findViewById(R.id.add_button);
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
+        add_button.setOnClickListener(view -> {
+            try (MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this)) {
                 myDB.addContact(name_input.getText().toString().trim(),
                         phone_input.getText().toString().trim(),
                         birthday_input.getText().toString().trim());
-//                finish();
             }
+//                finish();
         });
     }
 }

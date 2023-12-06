@@ -4,7 +4,6 @@ package com.example.simplecontactapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,25 +13,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    private Context context;
-    private Activity activity;
-    private ArrayList contact_id, contact_name, contact_phone, contact_birthday;
+    private final Context context;
+    private final Activity activity;
+    private final ArrayList<String> contact_id;
+    private final ArrayList<String> contact_name;
+    private final ArrayList<String> contact_phone;
+    private final ArrayList<String> contact_birthday;
 
-   Animation translate_anim;
-
-    CustomAdapter(Activity activity,
+      CustomAdapter(Activity activity,
                   Context context,
-                  ArrayList contact_id,
-                  ArrayList contact_name,
-                  ArrayList contact_phone,
-                  ArrayList contact_birthday) {
+                  ArrayList<String> contact_id,
+                  ArrayList<String> contact_name,
+                  ArrayList<String> contact_phone,
+                  ArrayList<String> contact_birthday) {
         this.activity = activity;
         this.context = context;
         this.contact_id = contact_id;
@@ -49,7 +48,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return new MyViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
@@ -58,16 +56,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.contact_phone_txt.setText(String.valueOf(contact_phone.get(position)));
         holder.contact_birthday_txt.setText(String.valueOf(contact_birthday.get(position)));
         //Recyclerview onClickListener
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateActivity.class);
-                intent.putExtra("id", String.valueOf(contact_id.get(position)));
-                intent.putExtra("name", String.valueOf(contact_name.get(position)));
-                intent.putExtra("phone", String.valueOf(contact_phone.get(position)));
-                intent.putExtra("birthday", String.valueOf(contact_birthday.get(position)));
-                activity.startActivityForResult(intent, 1);
-            }
+        holder.mainLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(context, UpdateActivity.class);
+            intent.putExtra("id", String.valueOf(contact_id.get(position)));
+            intent.putExtra("name", String.valueOf(contact_name.get(position)));
+            intent.putExtra("phone", String.valueOf(contact_phone.get(position)));
+            intent.putExtra("birthday", String.valueOf(contact_birthday.get(position)));
+            activity.startActivityForResult(intent, 1);
         });
 
 

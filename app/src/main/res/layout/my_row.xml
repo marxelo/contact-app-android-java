@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
@@ -23,7 +22,7 @@
                 android:id="@+id/contact_id_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="@string/placeholder_1"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -36,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Fulano da Silva"
+                android:text="@string/placeholder_name"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000"
@@ -47,7 +46,7 @@
                 android:id="@+id/contact_phone_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+55 (99)99999-9999"
+                android:text="@string/placeholder_phone"
                 app:layout_constraintStart_toStartOf="@+id/contact_name_txt"
                 app:layout_constraintTop_toBottomOf="@+id/contact_name_txt" />
 
@@ -55,7 +54,7 @@
                 android:id="@+id/contact_birthday_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01/01"
+                android:text="@string/placeholder_birthday"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

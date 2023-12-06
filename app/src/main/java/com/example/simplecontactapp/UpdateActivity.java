@@ -1,17 +1,13 @@
 package com.example.simplecontactapp;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.drawable.IconCompat;
-
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateActivity extends AppCompatActivity {
 
@@ -37,27 +33,20 @@ public class UpdateActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
 
         if (ab != null) {
-            ab.setTitle(name);;
+            ab.setTitle(name);
         }
-        update_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //And only then we call this
-                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+        update_button.setOnClickListener(view -> {
+            //And only then we call this
+            try (MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this)) {
                 name = name_input.getText().toString().trim();
                 phone = phone_input.getText().toString().trim();
                 birthday = birthday_input.getText().toString().trim();
                 myDB.updateData(id, name, phone, birthday);
-                finish();
             }
+            finish();
         });
 
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDialog();
-            }
-        });
+        delete_button.setOnClickListener(v -> confirmDialog());
 
 
     }
@@ -86,19 +75,14 @@ public class UpdateActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
         builder.setTitle("Excluir " + name + "?");
         builder.setMessage("Tem certeza que deseja excluir " + name + "?");
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+        builder.setPositiveButton("Sim", (dialog, which) -> {
+            try (MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this)) {
                 myDB.deleteOneRow(id);
-                finish();
             }
+            finish();
         });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton("Não", (dialog, which) -> {
 
-            }
         });
         builder.create().show();
     }
