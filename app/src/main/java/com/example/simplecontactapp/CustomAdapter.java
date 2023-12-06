@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
@@ -51,7 +52,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
-        holder.contact_id_txt.setText(String.valueOf(contact_id.get(position)));
+//        holder.contact_id_txt.setText(String.valueOf(contact_id.get(position)));
+        holder.contact_id_txt.setText(getInitials(String.valueOf(contact_name.get(position))));
         holder.contact_name_txt.setText(String.valueOf(contact_name.get(position)));
         holder.contact_phone_txt.setText(String.valueOf(contact_phone.get(position)));
         holder.contact_birthday_txt.setText(String.valueOf(contact_birthday.get(position)));
@@ -90,6 +92,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             mainLayout.setAnimation(translate_anim);
         }
 
+    }
+
+    public static String getInitials(String str) {
+        if (str.trim().isEmpty()) {
+            return "?";
+        }
+
+        // Replace all multiple spaces with a single space.
+        str = str.replaceAll("\\s+", " ");
+
+        // Split the string into words and remove empty words.
+        String[] words = str.split(" ");
+        List<String> nonEmptyWords = new ArrayList<>();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                nonEmptyWords.add(word);
+            }
+        }
+
+        if (nonEmptyWords.size() == 1) {
+            return String.valueOf(nonEmptyWords.get(0).charAt(0));
+        }
+
+        return nonEmptyWords.get(0).charAt(0) + String.valueOf(nonEmptyWords.get(nonEmptyWords.size() - 1).charAt(0));
     }
 
 }
