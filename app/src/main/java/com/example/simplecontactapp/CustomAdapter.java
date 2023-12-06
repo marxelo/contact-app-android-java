@@ -26,7 +26,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private final ArrayList<String> contact_phone;
     private final ArrayList<String> contact_birthday;
 
-      CustomAdapter(Activity activity,
+    CustomAdapter(Activity activity,
                   Context context,
                   ArrayList<String> contact_id,
                   ArrayList<String> contact_name,

@@ -23,11 +23,10 @@ public class AddActivity extends AppCompatActivity {
         add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(view -> {
             try (MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this)) {
-                myDB.addContact(name_input.getText().toString().trim(),
-                        phone_input.getText().toString().trim(),
-                        birthday_input.getText().toString().trim());
+                myDB.addContact(name_input.getText().toString().trim(), phone_input.getText().toString().trim(), birthday_input.getText().toString().trim());
             }
-//                finish();
+            setResult(RESULT_OK);
+            finish();
         });
     }
 }
