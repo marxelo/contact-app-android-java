@@ -29,6 +29,7 @@ public class AddActivity extends AppCompatActivity {
                 myDB.addContact(name_input.getText().toString().trim(),
                         phone_input.getText().toString().trim(),
                         birthday_input.getText().toString().trim());
+//                finish();
             }
         });
     }

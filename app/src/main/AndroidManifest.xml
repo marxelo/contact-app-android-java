@@ -13,10 +13,14 @@
         android:theme="@style/Theme.SimpleContactApp"
         tools:targetApi="31">
         <activity
-            android:name=".AddActivity"
-            android:label="Adicionar Contato"
+            android:name=".UpdateActivity"
             android:parentActivityName=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false"
+            android:label="Adicionar Contato"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
