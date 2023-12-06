@@ -44,7 +44,6 @@
                 android:text="@string/placeholder_name"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#424242"
                 app:layout_constraintStart_toEndOf="@+id/contact_id_txt"
                 app:layout_constraintTop_toTopOf="@+id/contact_id_txt" />
 
